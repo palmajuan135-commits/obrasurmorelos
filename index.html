@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ObraSur · Comparador de materiales de construcción — Zona sur de Morelos</title>
+<meta name="description" content="ObraSur compara precios de materiales de construcción en la zona sur de Morelos (Jojutla, Zacatepec, Tlaltizapán, Puente de Ixtla, Tlaquiltenango y Amacuzac), elige el proveedor más barato, calcula el total de tu obra y actualiza precios cada 15 días.">
+<meta name="keywords" content="precios de materiales de construcción Morelos, comparador de precios, cemento, varilla, block, grava, Jojutla, Zacatepec, presupuesto de obra, ingeniería civil">
+<meta name="author" content="ObraSur">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0d12">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="ObraSur">
+<meta property="og:title" content="ObraSur · Comparador de precios de materiales de construcción en el sur de Morelos">
+<meta property="og:description" content="Compara precios entre 6 proveedores del sur de Morelos, elige el más barato y calcula el total de tu obra. Precios actualizados cada 15 días.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ObraSur · Comparador de materiales de construcción">
+<meta name="twitter:description" content="Compara precios de materiales en el sur de Morelos y calcula el total de tu obra.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "ObraSur · Comparador de materiales de construcción",
+  "alternateName": "ObraSur",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "es-MX",
+  "description": "Aplicación para comparar precios de materiales de construcción entre proveedores de la zona sur de Morelos, elegir el más barato y calcular el total de la obra según cantidades, con precios actualizados cada 15 días.",
+  "keywords": "precios de materiales de construcción, comparador de precios, presupuesto de obra, ingeniería civil, Morelos",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "MXN" },
+  "areaServed": { "@type": "AdministrativeArea", "name": "Zona sur del estado de Morelos, México" }
+}
+</script>
+</head>
+<body>
+
+<!-- ===================== BARRA SUPERIOR ===================== -->
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="marca" href="#" data-vista="comparador">
+      <svg class="marca-icono" viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M4 27h24" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M8 27V13l8-6 8 6v14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M13 27v-7h6v7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+      </svg>
+      <span class="marca-texto">
+        <strong>ObraSur</strong>
+        <small>Materiales · Morelos sur</small>
+      </span>
+    </a>
+
+    <div class="topbar-der">
+      <span class="pastilla" id="estado-corte">Corte de precios: —</span>
+      <button class="btn btn-ambar" data-accion="ir-cotizador">Nueva cotización</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ===================== PORTADA ===================== -->
+  <section class="hero">
+    <div class="hero-texto">
+      <span class="eyebrow">Ingeniería civil · Zona sur de Morelos</span>
+      <h1>El precio más bajo,<br><span class="ambar">antes de comprar el material.</span></h1>
+      <p class="hero-p">
+        Compara el mismo material entre los proveedores de Jojutla, Zacatepec, Tlaquiltenango,
+        Tlaltizapán, Puente de Ixtla y Amacuzac. Elige al más barato, captura las cantidades
+        de tu obra y obtén el total a pagar en segundos. Los precios se revisan cada 15 días.
+      </p>
+      <div class="hero-acciones">
+        <button class="btn btn-ambar btn-grande" data-vista="comparador">Comparar materiales</button>
+        <button class="btn btn-linea btn-grande" data-vista="documentacion">Ver el proyecto</button>
+      </div>
+    </div>
+
+    <div class="hero-kpis" id="hero-kpis">
+      <!-- KPIs generados por app.js -->
+    </div>
+  </section>
+
+  <!-- ===================== PESTAÑAS ===================== -->
+  <nav class="tabs" role="tablist" aria-label="Secciones de la aplicación">
+    <button class="tab activa" role="tab" aria-selected="true" data-vista="comparador">Comparador</button>
+    <button class="tab" role="tab" aria-selected="false" data-vista="cotizador">Cotizador <span class="badge" id="badge-cot" hidden>0</span></button>
+    <button class="tab" role="tab" aria-selected="false" data-vista="proveedores">Proveedores</button>
+    <button class="tab" role="tab" aria-selected="false" data-vista="precios">Precios · quincena</button>
+    <button class="tab" role="tab" aria-selected="false" data-vista="documentacion">Documentación</button>
+  </nav>
+
+  <!-- ===================== VISTA: COMPARADOR ===================== -->
+  <section class="vista" id="vista-comparador" role="tabpanel" aria-label="Comparador de precios">
+
+    <div class="panel-toolbar">
+      <div class="buscador">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m16.5 16.5 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input id="busqueda" type="search" placeholder="Busca: cemento, varilla, block, arena…" autocomplete="off">
+      </div>
+      <div class="toolbar-der">
+        <label class="mini-label" for="orden">Ordenar por</label>
+        <select id="orden">
+          <option value="ahorro">Mayor ahorro</option>
+          <option value="precio">Menor precio</option>
+          <option value="nombre">Nombre (A–Z)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="chips" id="chips" role="group" aria-label="Filtrar por categoría"></div>
+
+    <p class="conteo" id="conteo-materiales"></p>
+
+    <div class="grid-materiales" id="lista-materiales"></div>
+  </section>
+
+  <!-- ===================== VISTA: COTIZADOR ===================== -->
+  <section class="vista" id="vista-cotizador" role="tabpanel" aria-label="Cotizador" hidden>
+
+    <div class="seccion-titulo">
+      <h2>Cotizador de obra</h2>
+      <p>Captura las cantidades, elige el proveedor de cada material y obtén el total. La merma estima el desperdicio normal de obra.</p>
+    </div>
+
+    <div class="cot-grid">
+      <div class="cot-principal">
+
+        <div class="panel">
+          <h3 class="panel-titulo">Datos de la obra</h3>
+          <div class="campos">
+            <label>Nombre de la obra
+              <input id="proy-nombre" type="text" placeholder="Ej. Casa habitación 2 niveles" autocomplete="off">
+            </label>
+            <label>Cliente / responsable
+              <input id="proy-cliente" type="text" placeholder="Ej. Ing. Laura Ríos" autocomplete="off">
+            </label>
+            <label>Ubicación
+              <input id="proy-ubicacion" type="text" placeholder="Ej. Jojutla, Morelos" autocomplete="off">
+            </label>
+            <label>Fecha
+              <input id="proy-fecha" type="date">
+            </label>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-cabecera">
+            <h3 class="panel-titulo">Materiales</h3>
+            <button class="btn btn-linea" data-vista="comparador">+ Agregar materiales</button>
+          </div>
+
+          <div class="vacio" id="cot-vacia">
+            <strong>Tu cotización está vacía.</strong>
+            <p>Ve al comparador, elige un material y usa el botón <em>Agregar</em>. Aquí aparecerá la lista con la cantidad, el proveedor y el importe.</p>
+            <button class="btn btn-ambar" data-vista="comparador">Ir al comparador</button>
+          </div>
+
+          <div id="cot-contenido" hidden>
+            <div class="tabla-scroll">
+              <table class="tabla-cot">
+                <thead>
+                  <tr>
+                    <th>Material</th>
+                    <th class="num">Cantidad</th>
+                    <th>Proveedor</th>
+                    <th class="num">P. unitario</th>
+                    <th class="num">Importe</th>
+                    <th><span class="sr-only">Quitar</span></th>
+                  </tr>
+                </thead>
+                <tbody id="cot-lineas"></tbody>
+              </table>
+            </div>
+            <div class="cot-acciones">
+              <button class="btn btn-linea" data-accion="vaciar">Vaciar cotización</button>
+              <button class="btn btn-linea" data-accion="guardar-proyecto">Guardar proyecto</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" id="panel-plan">
+          <h3 class="panel-titulo">Plan de compra sugerido</h3>
+          <p class="nota">Agrupamos los materiales por proveedor para que sepas a cuántos lugares ir y cuánto pagarías de flete.</p>
+          <div id="plan-compra"></div>
+        </div>
+
+        <div class="panel" id="panel-proyectos">
+          <h3 class="panel-titulo">Proyectos guardados</h3>
+          <div id="lista-proyectos"></div>
+        </div>
+      </div>
+
+      <aside class="cot-resumen">
+        <div class="panel panel-total">
+          <h3 class="panel-titulo">Resumen</h3>
+
+          <div class="resumen-linea">
+            <span>Materiales</span><strong id="res-materiales">$0.00</strong>
+          </div>
+          <div class="resumen-linea">
+            <span>Merma</span>
+            <span class="merma-control">
+              <input id="merma" type="number" min="0" max="30" step="1"> <span>%</span>
+            </span>
+          </div>
+          <div class="resumen-linea">
+            <span>IVA 16%</span>
+            <label class="switch">
+              <input id="iva" type="checkbox">
+              <span class="switch-ui"></span>
+            </label>
+          </div>
+          <div class="resumen-linea iva-linea">
+            <span id="iva-monto">$0.00</span>
+          </div>
+
+          <div class="resumen-total">
+            <span>Total a pagar</span>
+            <strong id="res-total">$0.00</strong>
+          </div>
+
+          <button class="btn btn-ambar btn-ancho btn-grande" id="btn-imprimir" data-accion="imprimir">Imprimir / guardar PDF</button>
+          <button class="btn btn-linea btn-ancho" data-accion="csv">Descargar CSV</button>
+          <p class="nota-mini">Los totales no incluyen flete salvo que se indique. Precios vigentes al corte mostrado en la parte superior.</p>
+        </div>
+
+        <div class="panel" id="panel-comparativa-proveedor">
+          <h3 class="panel-titulo">¿Conviene un solo proveedor?</h3>
+          <div id="comparativa-proveedor"></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===================== VISTA: PROVEEDORES ===================== -->
+  <section class="vista" id="vista-proveedores" role="tabpanel" aria-label="Proveedores" hidden>
+    <div class="seccion-titulo">
+      <h2>Proveedores de la zona sur</h2>
+      <p>Seis puntos de venta en la región. El índice compara cada proveedor contra el mejor precio de cada material: 100% significa que siempre es el más barato.</p>
+    </div>
+    <div class="grid-proveedores" id="lista-proveedores"></div>
+    <p class="nota pie-nota">Los datos de contacto y distancias son de ejemplo para el prototipo. Sustitúyelos por los reales antes de publicar.</p>
+  </section>
+
+  <!-- ===================== VISTA: PRECIOS ===================== -->
+  <section class="vista" id="vista-precios" role="tabpanel" aria-label="Actualización de precios" hidden>
+
+    <div class="seccion-titulo">
+      <h2>Precios y corte quincenal</h2>
+      <p>El comparador es confiable solo si los precios están vigentes. Cada 15 días se recorre la lista, se cotiza con los proveedores y se registra el precio nuevo aquí.</p>
+    </div>
+
+    <div class="precios-grid">
+      <div class="panel" id="panel-corte">
+        <!-- generado por app.js -->
+      </div>
+
+      <div class="panel">
+        <h3 class="panel-titulo">Registrar un precio nuevo</h3>
+        <p class="nota">Guarda el precio que te cotizaron. El precio anterior pasa al historial y la fecha del corte se actualiza.</p>
+        <form id="form-precio" class="form-precio" autocomplete="off">
+          <label>Material
+            <select id="f-material" required></select>
+          </label>
+          <label>Proveedor
+            <select id="f-proveedor" required></select>
+          </label>
+          <label>Precio actual (MXN)
+            <input id="f-precio" type="number" min="0.01" step="0.01" required>
+          </label>
+          <label>Fecha del levantamiento
+            <input id="f-fecha" type="date" required>
+          </label>
+          <button class="btn btn-ambar btn-ancho" type="submit">Registrar actualización</button>
+        </form>
+        <div class="cot-acciones">
+          <button class="btn btn-linea" data-accion="exportar-precios">Exportar JSON</button>
+          <button class="btn btn-linea" data-accion="importar-precios">Importar JSON</button>
+          <input type="file" id="archivo-precios" accept="application/json" hidden>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3 class="panel-titulo">Tendencias por material</h3>
+      <p class="nota">Precio del proveedor más barato en las dos últimas quincenas. Verde = bajó, rojo = subió.</p>
+      <div class="grid-tendencias" id="tendencias"></div>
+    </div>
+
+    <div class="panel">
+      <h3 class="panel-titulo">Historial de cambios registrados</h3>
+      <div id="historial-cambios"></div>
+    </div>
+  </section>
+
+  <!-- ===================== VISTA: DOCUMENTACIÓN ===================== -->
+  <section class="vista doc" id="vista-documentacion" role="tabpanel" aria-label="Documentación del proyecto" hidden>
+
+    <div class="seccion-titulo">
+      <h2>Documentación del proyecto</h2>
+      <p>Esta sección te sirve para el reporte y la presentación: resume el objetivo, el alcance, los módulos, el cronograma de 30 días y las mejoras propuestas.</p>
+    </div>
+
+    <div class="doc-grid">
+      <article class="panel doc-bloque">
+        <h3>Objetivo general</h3>
+        <p>Desarrollar una página web que compare los costos de los materiales de construcción entre proveedores de la zona sur del estado de Morelos, determine la opción más económica para cada material, calcule el monto total a pagar según las cantidades requeridas y mantenga los precios actualizados cada 15 días.</p>
+      </article>
+
+      <article class="panel doc-bloque">
+        <h3>Objetivos específicos</h3>
+        <ul>
+          <li>Integrar un catálogo de materiales de obra con su unidad de venta (bulto, pieza, m³, tramo, rollo).</li>
+          <li>Registrar, para cada material, el precio de cada proveedor de la región.</li>
+          <li>Identificar automáticamente el proveedor más barato y mostrar el ahorro frente a la opción más cara.</li>
+          <li>Calcular el total de la obra multiplicando cantidad por precio unitario, con merma e IVA.</li>
+          <li>Programar un ciclo de actualización de precios cada 15 días con historial de cambios.</li>
+          <li>Generar una cotización imprimible en PDF y exportable a hoja de cálculo.</li>
+        </ul>
+      </article>
+
+      <article class="panel doc-bloque">
+        <h3>Alcance y delimitación</h3>
+        <p>El prototipo cubre seis proveedores de los municipios de Jojutla, Zacatepec, Tlaquiltenango, Tlaltizapán, Puente de Ixtla y Amacuzac, con 24 materiales representativos de una obra residencial. No sustituye un presupuesto formal de obra: no incluye mano de obra, herramienta, fletes por volumen ni tiempos de entrega, y los precios deben verificarse con el proveedor antes de comprar.</p>
+        <p class="nota">Los precios incluidos son de ejemplo y sirven para demostrar el funcionamiento; se reemplazan registrando los precios reales en la sección <strong>Precios · quincena</strong>.</p>
+      </article>
+
+      <article class="panel doc-bloque">
+        <h3>Módulos del sistema</h3>
+        <div class="tabla-scroll">
+          <table class="tabla-doc">
+            <thead><tr><th>Módulo</th><th>Qué resuelve</th></tr></thead>
+            <tbody>
+              <tr><td>Comparador</td><td>Precio de cada proveedor por material, mejor opción y ahorro potencial.</td></tr>
+              <tr><td>Cotizador</td><td>Cantidades, proveedor elegido, importes, merma, IVA y total a pagar.</td></tr>
+              <tr><td>Plan de compra</td><td>Agrupa los materiales por proveedor y estima fletes y número de viajes.</td></tr>
+              <tr><td>Proveedores</td><td>Índice de competitividad, distancia, envío y datos de contacto.</td></tr>
+              <tr><td>Precios</td><td>Corte quincenal, registro de precios nuevos, tendencias e historial.</td></tr>
+              <tr><td>Proyectos</td><td>Guarda varias cotizaciones en el navegador para retomarlas después.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </div>
+
+    <div class="panel">
+      <h3 class="panel-titulo">Cronograma de 30 días</h3>
+      <ol class="linea-tiempo">
+        <li>
+          <span class="lt-dia">Semana 1 · Días 1 a 7</span>
+          <strong>Levantamiento de información</strong>
+          <p>Definir los 24 materiales y sus unidades, visitar o llamar a los seis proveedores, capturar precios y registrar distancias y costos de envío.</p>
+        </li>
+        <li>
+          <span class="lt-dia">Semana 2 · Días 8 a 14</span>
+          <strong>Catálogo y comparador</strong>
+          <p>Construir la estructura de datos, las fichas de material, el buscador, los filtros y el cálculo de ahorro entre proveedores.</p>
+        </li>
+        <li>
+          <span class="lt-dia">Semana 3 · Días 15 a 21</span>
+          <strong>Cotizador y actualización quincenal</strong>
+          <p>Suma de totales con merma e IVA, plan de compra, cotización imprimible, registro de precios y primer corte quincenal real.</p>
+        </li>
+        <li>
+          <span class="lt-dia">Semana 4 · Días 22 a 30</span>
+          <strong>Pruebas, documentación y entrega</strong>
+          <p>Validar los precios con los proveedores, probar la aplicación en celular y computadora, redactar el reporte y presentar el proyecto.</p>
+        </li>
+      </ol>
+    </div>
+
+    <div class="doc-grid">
+      <article class="panel doc-bloque">
+        <h3>Metodología de actualización quincenal</h3>
+        <ol>
+          <li>El día 1 y el día 16 de cada mes se solicita la lista de precios a los seis proveedores.</li>
+          <li>Cada precio se registra en <strong>Precios · quincena</strong> con la fecha del levantamiento.</li>
+          <li>La aplicación guarda el precio anterior y calcula la variación porcentual.</li>
+          <li>Si un precio sube más de 5%, el material se marca con tendencia al alza para revisar proveedor alterno.</li>
+          <li>Las cotizaciones se emiten con la fecha de corte vigente; pasado el día 15 se recomienda volver a cotizar.</li>
+        </ol>
+      </article>
+
+      <article class="panel doc-bloque">
+        <h3>Mejoras futuras</h3>
+        <ul>
+          <li>Cotización enviada por WhatsApp al proveedor desde la misma aplicación.</li>
+          <li>Precios por volumen y descuentos por compra de más de cierta cantidad.</li>
+          <li>Base de datos en línea para que varios usuarios compartan los precios capturados.</li>
+          <li>Alta de proveedores y materiales por el propio usuario.</li>
+          <li>Comparación entre quincenas y alerta de alzas mayores al 5%.</li>
+          <li>Versión instalable en celular (PWA) que funcione sin internet en la obra.</li>
+          <li>Cálculo de flete por volumen y distancia, no solo por proveedor.</li>
+        </ul>
+      </article>
+
+      <article class="panel doc-bloque">
+        <h3>Ficha técnica</h3>
+        <ul>
+          <li><strong>Tecnologías:</strong> HTML5, CSS3 y JavaScript sin dependencias externas.</li>
+          <li><strong>Datos:</strong> catálogo en <code>data.js</code>; los precios registrados y las cotizaciones se guardan en el navegador (localStorage).</li>
+          <li><strong>Archivos:</strong> <code>index.html</code> (estructura), <code>styles.css</code> (diseño), <code>data.js</code> (proveedores, materiales y precios), <code>app.js</code> (lógica).</li>
+          <li><strong>Publicación:</strong> cualquier hosting estático (GitHub Pages, Netlify, Vercel) o abriendo <code>index.html</code>.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <footer class="pie">
+    <div>
+      <strong>ObraSur</strong> · Comparador de materiales de construcción, zona sur de Morelos.
+      <p class="nota-mini">Prototipo académico. Verifica siempre los precios con el proveedor antes de comprar.</p>
+    </div>
+    <div class="pie-der">
+      <span class="pastilla pastilla-suave">Corte quincenal</span>
+      <span class="pastilla pastilla-suave">6 proveedores</span>
+      <span class="pastilla pastilla-suave">24 materiales</span>
+    </div>
+  </footer>
+</main>
+
+<!-- Hoja que se imprime / guarda como PDF -->
+<div class="print-area" id="hoja-impresion"></div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
