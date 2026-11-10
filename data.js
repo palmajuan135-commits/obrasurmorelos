@@ -134,7 +134,7 @@ const MATERIALES = [
 /* Precios: [precio actual, precio quincena anterior] ---------------------- */
 const PRECIOS = {
   'cemento-gris':   { jojutla: [178, 172],   acero: [189, 186],   sur: [182, 178],   ixtla: [174, 170],   constructor: [181, 176],   amacuzac: [192, 188] },
-  'cemento-ton':    { jojutla: [3560, 3440], acero: [3780, 3720], sur: [3640, 3560], ixtla: [3480, 3400], constructor: [3620, 3520], amacuzac: [3840, 3760] },
+  'cemento-ton':    { jojutla: [3560, 3440], acero: [3780, 3720], sur: [3640, 3560], ixtla: [3480, 3400], constructor: [3620, 3520], amacuzac: [4840, 3760] },
   'cemento-blanco': { jojutla: [245, 238],   acero: [258, 255],   sur: [249, 245],   ixtla: [252, 246],   constructor: [242, 236],   amacuzac: [265, 260] },
   'cal':            { jojutla: [88, 85],     acero: [92, 90],     sur: [90, 88],     ixtla: [95, 92],     constructor: [82, 79],     amacuzac: [98, 95] },
   'mortero':        { jojutla: [162, 158],   acero: [168, 165],   sur: [159, 156],   ixtla: [155, 150],   constructor: [166, 160],   amacuzac: [172, 168] },
