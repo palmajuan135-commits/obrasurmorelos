@@ -95,6 +95,7 @@ const PROVEEDORES = [
 const MATERIALES = [
   // Cemento y mortero
   { id: 'cemento-gris',   nombre: 'Cemento CPC 30R',                 categoria: 'Cemento y mortero', unidad: 'bulto 50 kg', uso: 'Firmes, castillos y dalas' },
+  { id: 'cemento-ton',    nombre: 'Cemento CPC 30R',                 categoria: 'Cemento y mortero', unidad: 'tonelada', uso: 'Equivale a 20 bultos de 50 kg', principal: 'cemento-gris', presentacion: 'tonelada (20 bultos)' },
   { id: 'cemento-blanco', nombre: 'Cemento blanco',                   categoria: 'Cemento y mortero', unidad: 'bulto 25 kg', uso: 'Detalles y acabados finos' },
   { id: 'cal',            nombre: 'Cal hidratada',                    categoria: 'Cemento y mortero', unidad: 'bulto 25 kg', uso: 'Mortero y aplanados' },
   { id: 'mortero',        nombre: 'Mortero predosificado',            categoria: 'Cemento y mortero', unidad: 'bulto 50 kg', uso: 'Aplanados y pegas' },
@@ -105,10 +106,12 @@ const MATERIALES = [
   { id: 'malla',          nombre: 'Malla electrosoldada 6x6-10/10',   categoria: 'Acero',             unidad: 'm²',          uso: 'Firmes y losas' },
   // Agregados
   { id: 'arena',          nombre: 'Arena amarilla',                   categoria: 'Agregados',         unidad: 'm³',          uso: 'Mortero y concretos' },
-   { id: 'arena',         nombre: 'Arena amarilla',                   categoria: 'Agregados',         unidad: 'T',          uso: 'Mortero y concretos' }, 
   { id: 'grava',          nombre: 'Grava 3/4"',                       categoria: 'Agregados',         unidad: 'm³',          uso: 'Concreto estructural' },
-   { id: 'grava',          nombre: 'Grava 3/4"',                       categoria: 'Agregados',         unidad: 'T',          uso: 'Concreto estructural' },
   { id: 'piedra',         nombre: 'Piedra braza',                     categoria: 'Agregados',         unidad: 'm³',          uso: 'Cimentación y muros' },
+  { id: 'arena-ton',   nombre: 'Arena amarilla por tonelada',  categoria: 'Agregados', unidad: 'tonelada',  uso: 'Venta por peso; 1 m³ ≈ 1.5 t', principal: 'arena', presentacion: 'tonelada' },
+  { id: 'arena-viaje', nombre: 'Arena amarilla por viaje',      categoria: 'Agregados', unidad: 'viaje 7 m³', uso: 'Camión completo de 7 m³', principal: 'arena', presentacion: 'viaje 7 m³' },
+  { id: 'grava-ton',   nombre: 'Grava 3/4" por tonelada',      categoria: 'Agregados', unidad: 'tonelada',  uso: 'Venta por peso; 1 m³ ≈ 1.45 t', principal: 'grava', presentacion: 'tonelada' },
+  { id: 'grava-viaje', nombre: 'Grava 3/4" por viaje',         categoria: 'Agregados', unidad: 'viaje 7 m³', uso: 'Camión completo de 7 m³', principal: 'grava', presentacion: 'viaje 7 m³' },
   // Block y tabique
   { id: 'block-15',       nombre: 'Block de concreto 15×20×40',       categoria: 'Block y tabique',   unidad: 'pieza',       uso: 'Muros exteriores' },
   { id: 'block-10',       nombre: 'Block de concreto 10×20×40',       categoria: 'Block y tabique',   unidad: 'pieza',       uso: 'Tabiques y divisiones' },
@@ -131,6 +134,7 @@ const MATERIALES = [
 /* Precios: [precio actual, precio quincena anterior] ---------------------- */
 const PRECIOS = {
   'cemento-gris':   { jojutla: [178, 172],   acero: [189, 186],   sur: [182, 178],   ixtla: [174, 170],   constructor: [181, 176],   amacuzac: [192, 188] },
+  'cemento-ton':    { jojutla: [3560, 3440], acero: [3780, 3720], sur: [3640, 3560], ixtla: [3480, 3400], constructor: [3620, 3520], amacuzac: [3840, 3760] },
   'cemento-blanco': { jojutla: [245, 238],   acero: [258, 255],   sur: [249, 245],   ixtla: [252, 246],   constructor: [242, 236],   amacuzac: [265, 260] },
   'cal':            { jojutla: [88, 85],     acero: [92, 90],     sur: [90, 88],     ixtla: [95, 92],     constructor: [82, 79],     amacuzac: [98, 95] },
   'mortero':        { jojutla: [162, 158],   acero: [168, 165],   sur: [159, 156],   ixtla: [155, 150],   constructor: [166, 160],   amacuzac: [172, 168] },
@@ -153,5 +157,9 @@ const PRECIOS = {
   'poliducto':      { jojutla: [780, 765],   acero: [820, 810],   sur: [760, 750],   ixtla: [800, 790],   constructor: [775, 760],   amacuzac: [735, 720] },
   'cable':          { jojutla: [1560, 1520], acero: [1480, 1495], sur: [1520, 1500], ixtla: [1540, 1520], constructor: [1550, 1530], amacuzac: [1440, 1410] },
   'madera':         { jojutla: [148, 142],   acero: [155, 152],   sur: [138, 134],   ixtla: [145, 140],   constructor: [142, 138],   amacuzac: [160, 155] },
-  'triplay':        { jojutla: [565, 550],   acero: [580, 575],   sur: [535, 525],   ixtla: [555, 545],   constructor: [548, 540],   amacuzac: [595, 580] }
+  'triplay':        { jojutla: [565, 550],   acero: [580, 575],   sur: [535, 525],   ixtla: [555, 545],   constructor: [548, 540],   amacuzac: [595, 580] },
+  'arena-ton':      { jojutla: [287, 277],   acero: [303, 300],   sur: [280, 273],   ixtla: [263, 257],   constructor: [277, 270],   amacuzac: [313, 307] },
+  'arena-viaje':    { jojutla: [3010, 2905],   acero: [3185, 3150],   sur: [2940, 2870],   ixtla: [2765, 2695],   constructor: [2905, 2835],   amacuzac: [3290, 3220] },
+  'grava-ton':      { jojutla: [321, 310],   acero: [331, 328],   sur: [303, 300],   ixtla: [293, 286],   constructor: [309, 303],   amacuzac: [341, 334] },
+  'grava-viaje':    { jojutla: [3255, 3150],   acero: [3360, 3325],   sur: [3080, 3045],   ixtla: [2975, 2905],   constructor: [3136, 3080],   amacuzac: [3465, 3395] }
 };
