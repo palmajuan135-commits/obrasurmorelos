@@ -105,7 +105,9 @@ const MATERIALES = [
   { id: 'malla',          nombre: 'Malla electrosoldada 6x6-10/10',   categoria: 'Acero',             unidad: 'm²',          uso: 'Firmes y losas' },
   // Agregados
   { id: 'arena',          nombre: 'Arena amarilla',                   categoria: 'Agregados',         unidad: 'm³',          uso: 'Mortero y concretos' },
+   { id: 'arena',         nombre: 'Arena amarilla',                   categoria: 'Agregados',         unidad: 'T',          uso: 'Mortero y concretos' }, 
   { id: 'grava',          nombre: 'Grava 3/4"',                       categoria: 'Agregados',         unidad: 'm³',          uso: 'Concreto estructural' },
+   { id: 'grava',          nombre: 'Grava 3/4"',                       categoria: 'Agregados',         unidad: 'T',          uso: 'Concreto estructural' },
   { id: 'piedra',         nombre: 'Piedra braza',                     categoria: 'Agregados',         unidad: 'm³',          uso: 'Cimentación y muros' },
   // Block y tabique
   { id: 'block-15',       nombre: 'Block de concreto 15×20×40',       categoria: 'Block y tabique',   unidad: 'pieza',       uso: 'Muros exteriores' },
