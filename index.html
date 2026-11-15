@@ -3,37 +3,33 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ObraSur · Comparador de materiales de construcción — Zona sur de Morelos</title>
+<title>obrasur · Plataforma de materiales y presupuestos</title>
 <meta name="description" content="ObraSur compara precios de materiales de construcción en la zona sur de Morelos (Jojutla, Zacatepec, Tlaltizapán, Puente de Ixtla, Tlaquiltenango y Amacuzac), elige el proveedor más barato, calcula el total de tu obra y actualiza precios cada 15 días.">
 <meta name="keywords" content="precios de materiales de construcción Morelos, comparador de precios, cemento, varilla, block, grava, Jojutla, Zacatepec, presupuesto de obra, ingeniería civil">
-<meta name="author" content="ObraSur">
+<meta name="author" content="obrasur">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0a0d12">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_MX">
-<meta property="og:site_name" content="ObraSur">
-<meta property="og:title" content="ObraSur · Comparador de precios de materiales de construcción en el sur de Morelos">
+<meta property="og:site_name" content="obrasur">
+<meta property="og:title" content="obrasur · Comparador de materiales y presupuestos">
 <meta property="og:description" content="Compara precios entre 6 proveedores del sur de Morelos, elige el más barato y calcula el total de tu obra. Precios actualizados cada 15 días.">
-<link rel="canonical" href="https://obrasur.com.mx/">
-<meta property="og:url" content="https://obrasur.com.mx/">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ObraSur · Comparador de materiales de construcción">
+<meta name="twitter:title" content="obrasur · Comparador de materiales">
 <meta name="twitter:description" content="Compara precios de materiales en el sur de Morelos y calcula el total de tu obra.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<noscript><style>#cargador { display: none !important; }</style></noscript>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "ObraSur · Comparador de materiales de construcción",
+  "name": "obrasur · Comparador de materiales de construcción",
   "alternateName": "ObraSur",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Web",
   "inLanguage": "es-MX",
-  "url": "https://obrasur.com.mx/",
   "description": "Aplicación para comparar precios de materiales de construcción entre proveedores de la zona sur de Morelos, elegir el más barato y calcular el total de la obra según cantidades, con precios actualizados cada 15 días.",
   "keywords": "precios de materiales de construcción, comparador de precios, presupuesto de obra, ingeniería civil, Morelos",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "MXN" },
@@ -42,6 +38,30 @@
 </script>
 </head>
 <body>
+
+<!-- ===================== BARRA SUPERIOR ===================== -->
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="marca" href="#" data-vista="comparador">
+      <svg class="marca-icono" viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M4 27h24" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M8 27V13l8-6 8 6v14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M13 27v-7h6v7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+      </svg>
+      <span class="marca-texto">
+        <strong>PrecioObra</strong>
+        <small>MORELOS · CONSTRUCTION INTELLIGENCE</small>
+      </span>
+    </a>
+
+    <div class="topbar-der">
+      <span class="pastilla" id="estado-corte">Corte de precios: —</span>
+      <button class="btn btn-ambar" data-accion="ir-cotizador">Nueva cotización</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
 
   <!-- ===================== PORTADA ===================== -->
   <section class="hero">
