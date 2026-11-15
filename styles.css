@@ -483,7 +483,7 @@ table { width: 100%; border-collapse: collapse; }
 
 
 /* ==========================================================================
-   PRECIOOBRA MORELOS · TITANIUM EDITION
+   OBRASUR · TITANIUM EDITION
    Rediseño visual sin alterar IDs, eventos ni lógica de app.js.
    Paleta: negro, blanco, grafito y plata. Sin acentos verdes.
    ========================================================================== */
@@ -561,7 +561,7 @@ main.wrap {
   box-shadow: 18px 0 55px rgba(0,0,0,.28);
 }
 .tabs::before {
-  content: "PRECIOOBRA";
+  content: "OBRASUR";
   display: block;
   color: #f7f9fc;
   font-family: var(--fuente-titulo);
@@ -766,4 +766,60 @@ table td { border-color: rgba(225,235,247,.10); }
     from { opacity: 0; transform: translateY(9px); }
     to { opacity: 1; transform: translateY(0); }
   }
+}
+
+
+/* ============================================================================
+   OBRASUR · Pantalla de carga Titanium
+   Solo CSS: no modifica index.html, data.js ni app.js.
+   ========================================================================== */
+body::before {
+  content: "OBRASUR\\A\\A PREPARANDO TU ESPACIO DE TRABAJO";
+  white-space: pre;
+  position: fixed;
+  inset: 0;
+  z-index: 99998;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  padding: 30px;
+  color: #f4f6f8;
+  background:
+    radial-gradient(ellipse at 50% 43%, rgba(178, 190, 204, .13), transparent 34%),
+    linear-gradient(145deg, #080a0e 0%, #151a22 52%, #080a0e 100%);
+  font-family: var(--fuente-titulo);
+  font-size: clamp(17px, 2.5vw, 25px);
+  font-weight: 750;
+  letter-spacing: .20em;
+  line-height: 1.7;
+  animation: po-loader-out .65s ease 1.9s forwards;
+  pointer-events: none;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  z-index: 99999;
+  left: 50%;
+  top: calc(50% + 76px);
+  width: 42px;
+  height: 42px;
+  margin-left: -21px;
+  border: 3px solid rgba(220, 226, 234, .18);
+  border-top-color: #e5e9ef;
+  border-right-color: #8e9aaa;
+  border-radius: 50%;
+  box-shadow: 0 0 24px rgba(210, 220, 232, .12);
+  animation: po-loader-spin .8s linear infinite, po-loader-out .65s ease 1.9s forwards;
+  pointer-events: none;
+}
+
+@keyframes po-loader-spin { to { transform: rotate(360deg); } }
+@keyframes po-loader-out {
+  to { opacity: 0; visibility: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before { animation: po-loader-out .01s linear 1.2s forwards !important; }
+  body::after { animation: po-loader-out .01s linear 1.2s forwards !important; }
 }
