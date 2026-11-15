@@ -773,53 +773,70 @@ table td { border-color: rgba(225,235,247,.10); }
    OBRASUR · Pantalla de carga Titanium
    Solo CSS: no modifica index.html, data.js ni app.js.
    ========================================================================== */
-body::before {
-  content: "OBRASUR\\A\\A PREPARANDO TU ESPACIO DE TRABAJO";
-  white-space: pre;
-  position: fixed;
-  inset: 0;
-  z-index: 99998;
-  display: grid;
-  place-content: center;
-  text-align: center;
-  padding: 30px;
-  color: #f4f6f8;
+/* ========================== pantalla de carga ========================= */
+.cargador {
+  position: fixed; inset: 0; z-index: 500;
+  display: grid; place-items: center;
   background:
-    radial-gradient(ellipse at 50% 43%, rgba(178, 190, 204, .13), transparent 34%),
-    linear-gradient(145deg, #080a0e 0%, #151a22 52%, #080a0e 100%);
-  font-family: var(--fuente-titulo);
-  font-size: clamp(17px, 2.5vw, 25px);
-  font-weight: 750;
-  letter-spacing: .20em;
-  line-height: 1.7;
-  animation: po-loader-out .65s ease 1.9s forwards;
-  pointer-events: none;
+    radial-gradient(700px 420px at 50% 12%, rgba(242, 169, 44, .14), transparent 65%),
+    radial-gradient(600px 500px at 80% 100%, rgba(70, 211, 154, .06), transparent 70%),
+    #06080d;
+  transition: opacity .5s ease, visibility .5s ease;
+  animation: cargador-auto-fuera .6s ease 3.6s forwards;
 }
+.cargador::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, .028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, .028) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(circle at 50% 45%, #000, transparent 72%);
+  mask-image: radial-gradient(circle at 50% 45%, #000, transparent 72%);
+}
+.cargador.fuera { opacity: 0; visibility: hidden; pointer-events: none; }
+@keyframes cargador-auto-fuera {
+  to { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+.cargador-caja {
+  position: relative; width: min(90vw, 400px); text-align: center;
+  padding: 34px 4px;
+}
+.cargador-icono {
+  width: 62px; height: 62px; margin: 0 auto 20px; padding: 14px;
+  color: var(--ambar-fuerte);
+  background: linear-gradient(160deg, rgba(242, 169, 44, .2), rgba(242, 169, 44, .04));
+  border: 1px solid var(--ambar-borde); border-radius: 18px;
+  box-shadow: 0 0 0 10px rgba(242, 169, 44, .05), 0 26px 50px -30px rgba(242, 169, 44, .65);
+  animation: icono-latido 2.4s ease-in-out infinite;
+}
+@keyframes icono-latido {
+  0%, 100% { box-shadow: 0 0 0 10px rgba(242, 169, 44, .05), 0 26px 50px -30px rgba(242, 169, 44, .55); }
+  50% { box-shadow: 0 0 0 16px rgba(242, 169, 44, .035), 0 26px 60px -26px rgba(242, 169, 44, .8); }
+}
+.cargador-marca {
+  font-family: var(--fuente-titulo); font-size: 30px; font-weight: 700;
+  letter-spacing: -.045em; color: var(--texto); line-height: 1;
+}
+.cargador-marca span { color: var(--ambar-fuerte); }
+.cargador-lema {
+  margin-top: 10px; font-size: 10.5px; letter-spacing: .19em;
+  text-transform: uppercase; color: var(--texto-3); font-weight: 600;
+}
+.cargador-barra {
+  position: relative; height: 3px; margin: 30px auto 0;
+  background: rgba(255, 255, 255, .08); border-radius: 999px; overflow: hidden;
+}
+.cargador-barra span {
+  display: block; height: 100%; width: 0; border-radius: 999px;
+  background: linear-gradient(90deg, var(--ambar), var(--ambar-fuerte));
+  box-shadow: 0 0 12px rgba(242, 169, 44, .7);
+  transition: width .28s ease;
+}
+.cargador-pie {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  margin-top: 12px; font-size: 10.5px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--texto-3); font-weight: 600;
+}
+.cargador-pct { font-variant-numeric: tabular-nums; color: var(--ambar-fuerte); }
 
-body::after {
-  content: "";
-  position: fixed;
-  z-index: 99999;
-  left: 50%;
-  top: calc(50% + 76px);
-  width: 42px;
-  height: 42px;
-  margin-left: -21px;
-  border: 3px solid rgba(220, 226, 234, .18);
-  border-top-color: #e5e9ef;
-  border-right-color: #8e9aaa;
-  border-radius: 50%;
-  box-shadow: 0 0 24px rgba(210, 220, 232, .12);
-  animation: po-loader-spin .8s linear infinite, po-loader-out .65s ease 1.9s forwards;
-  pointer-events: none;
-}
-
-@keyframes po-loader-spin { to { transform: rotate(360deg); } }
-@keyframes po-loader-out {
-  to { opacity: 0; visibility: hidden; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body::before { animation: po-loader-out .01s linear 1.2s forwards !important; }
-  body::after { animation: po-loader-out .01s linear 1.2s forwards !important; }
-}
