@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ObraSur · Comparador de materiales de construcción — Zona sur de Morelos</title>
+<title>ObraSur · Plataforma de materiales y presupuestos</title>
 <meta name="description" content="ObraSur compara precios de materiales de construcción en la zona sur de Morelos (Jojutla, Zacatepec, Tlaltizapán, Puente de Ixtla, Tlaquiltenango y Amacuzac), elige el proveedor más barato, calcula el total de tu obra y actualiza precios cada 15 días.">
 <meta name="keywords" content="precios de materiales de construcción Morelos, comparador de precios, cemento, varilla, block, grava, Jojutla, Zacatepec, presupuesto de obra, ingeniería civil">
 <meta name="author" content="ObraSur">
@@ -12,18 +12,15 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_MX">
 <meta property="og:site_name" content="ObraSur">
-<meta property="og:title" content="ObraSur · Comparador de precios de materiales de construcción en el sur de Morelos">
+<meta property="og:title" content="ObraSur · Comparador de materiales y presupuestos">
 <meta property="og:description" content="Compara precios entre 6 proveedores del sur de Morelos, elige el más barato y calcula el total de tu obra. Precios actualizados cada 15 días.">
-<link rel="canonical" href="https://obrasur.com.mx/">
-<meta property="og:url" content="https://obrasur.com.mx/">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ObraSur · Comparador de materiales de construcción">
+<meta name="twitter:title" content="ObraSur · Comparador de materiales">
 <meta name="twitter:description" content="Compara precios de materiales en el sur de Morelos y calcula el total de tu obra.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<noscript><style>#cargador { display: none !important; }</style></noscript>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -33,7 +30,6 @@
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Web",
   "inLanguage": "es-MX",
-  "url": "https://obrasur.com.mx/",
   "description": "Aplicación para comparar precios de materiales de construcción entre proveedores de la zona sur de Morelos, elegir el más barato y calcular el total de la obra según cantidades, con precios actualizados cada 15 días.",
   "keywords": "precios de materiales de construcción, comparador de precios, presupuesto de obra, ingeniería civil, Morelos",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "MXN" },
@@ -43,144 +39,68 @@
 </head>
 <body>
 
-<!-- ===================== PANTALLA DE CARGA ===================== -->
-<div class="cargador" id="cargador" aria-hidden="true">
-  <div class="cargador-caja">
-    <svg class="cargador-icono" viewBox="0 0 32 32" aria-hidden="true">
-      <path d="M4 27h24" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-      <path d="M8 27V13l8-6 8 6v14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
-      <path d="M13 27v-7h6v7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
-    </svg>
-    <div class="cargador-marca">Obra<span>Sur</span></div>
-    <p class="cargador-lema">Precios de obra · Morelos sur</p>
-    <div class="cargador-barra"><span></span></div>
-    <div class="cargador-pie"><span>Cargando catálogo</span><span class="cargador-pct">0%</span></div>
-  </div>
-</div>
-
-<!-- ===================== BARRA LATERAL ===================== -->
-<div class="app">
-  <aside class="lateral">
-    <a class="lateral-marca" href="#" data-vista="comparador">
-      <svg viewBox="0 0 32 32" aria-hidden="true">
+<!-- ===================== BARRA SUPERIOR ===================== -->
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="marca" href="#" data-vista="comparador">
+      <svg class="marca-icono" viewBox="0 0 32 32" aria-hidden="true">
         <path d="M4 27h24" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
         <path d="M8 27V13l8-6 8 6v14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
         <path d="M13 27v-7h6v7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
       </svg>
-      <span><strong>ObraSur</strong><small>Morelos</small></span>
+      <span class="marca-texto">
+        <strong>ObraSur</strong>
+        <small>MORELOS · CONSTRUCTION INTELLIGENCE</small>
+      </span>
     </a>
 
-    <nav class="lateral-nav" role="tablist" aria-label="Secciones de la aplicación">
-      <button class="tab activa" role="tab" aria-selected="true" data-vista="comparador">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11 l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
-        <span><strong>Inicio</strong><small>Comparador</small></span>
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-vista="cotizador">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M8 8h8M8 12h3M13 12h3M8 16h3M13 16h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-        <span><strong>Cotizador</strong><small>Presupuestos</small><span class="badge" id="badge-cot" hidden>0</span></span>
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-vista="proveedores">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l2-5h14l2 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M4 9v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M9 20v-6h6v6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
-        <span><strong>Proveedores</strong><small>6 en la región</small></span>
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-vista="precios">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5M4 19h16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M7 15l4-5 3 3 5-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span><strong>Precios</strong><small>Corte quincenal</small></span>
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-vista="documentacion">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M14 3v5h5M8.5 13h7M8.5 17h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-        <span><strong>Documentación</strong><small>Proyecto</small></span>
-      </button>
-    </nav>
-
-    <div class="lateral-pie">
-      <svg viewBox="0 0 120 46" aria-hidden="true">
-        <path d="M2 44 L30 12 L48 30 L66 6 L92 40 L118 44" fill="none" stroke="rgba(242,169,44,.45)" stroke-width="1.6" stroke-linejoin="round"/>
-        <path d="M14 44 L34 26 L52 38 L70 20 L88 40" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1.2" stroke-linejoin="round"/>
-      </svg>
-      <p>Construyendo<br>un Morelos mejor</p>
+    <div class="topbar-der">
+      <span class="pastilla" id="estado-corte">Corte de precios: —</span>
+      <button class="btn btn-ambar" data-accion="ir-cotizador">Nueva cotización</button>
     </div>
-  </aside>
+  </div>
+</header>
 
-  <div class="principal">
-    <header class="topbar">
-      <a class="marca-movil" href="#" data-vista="comparador">
-        <svg viewBox="0 0 32 32" aria-hidden="true">
-          <path d="M4 27h24" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-          <path d="M8 27V13l8-6 8 6v14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
-        </svg>
-        <strong>ObraSur</strong>
-      </a>
+<main class="wrap">
 
-      <div class="buscador">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m16.5 16.5 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        <input id="busqueda" type="search" placeholder="Buscar materiales, proveedores…" autocomplete="off">
+  <!-- ===================== PORTADA ===================== -->
+  <section class="hero">
+    <div class="hero-texto">
+      <span class="eyebrow">PLATAFORMA DE INGENIERÍA CIVIL · MORELOS</span>
+      <h1>Construye con precisión.<br><span class="ambar">Decide con mejores precios.</span></h1>
+      <p class="hero-p">
+        Compara materiales entre proveedores de Jojutla, Zacatepec, Tlaquiltenango,
+        Tlaltizapán, Puente de Ixtla y Amacuzac. Elige el más barato, captura las cantidades
+        de tu obra y obtén el total a pagar en segundos. Los precios se revisan cada 15 días.
+      </p>
+      <div class="hero-acciones">
+        <button class="btn btn-ambar btn-grande" data-vista="comparador">Comparar materiales</button>
+        <button class="btn btn-linea btn-grande" data-vista="documentacion">Ver el proyecto</button>
       </div>
-
-      <div class="topbar-der">
-        <span class="pastilla" id="estado-corte">Corte de precios: —</span>
-        <button class="btn btn-ambar" data-accion="ir-cotizador">Nueva cotización</button>
-        <span class="usuario">
-          <span class="usuario-avatar">OS</span>
-          <span class="usuario-datos"><strong>ObraSur</strong><small>Administrador</small></span>
-        </span>
-      </div>
-    </header>
-
-    <main class="wrap">
-
-  <!-- ===================== VISTA: COMPARADOR ===================== -->
-  <section class="vista" id="vista-comparador" role="tabpanel" aria-label="Comparador de precios">
-
-    <section class="banner">
-      <svg class="banner-arte" viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <defs>
-          <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#18232f"/><stop offset="1" stop-color="#070b11"/>
-          </linearGradient>
-          <linearGradient id="cristal" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#c9d8e8" stop-opacity=".55"/><stop offset="1" stop-color="#4f6a86" stop-opacity=".14"/>
-          </linearGradient>
-          <pattern id="ventanas" width="30" height="34" patternUnits="userSpaceOnUse">
-            <rect x="5" y="6" width="16" height="15" fill="#9db4ca" opacity=".22"/>
-          </pattern>
-        </defs>
-        <rect width="1200" height="420" fill="url(#cielo)"/>
-        <circle cx="880" cy="86" r="190" fill="#f2a92c" opacity=".1"/>
-        <g>
-          <rect x="618" y="128" width="252" height="262" fill="#101a25" stroke="#3a5570" stroke-width="1.4"/>
-          <rect x="626" y="136" width="236" height="246" fill="url(#cristal)" opacity=".55"/>
-          <rect x="626" y="136" width="236" height="246" fill="url(#ventanas)" opacity=".8"/>
-          <path d="M618 128 L700 96 L952 96 L870 128 Z" fill="#16222f" stroke="#3a5570" stroke-width="1.2"/>
-        </g>
-        <g>
-          <rect x="840" y="214" width="230" height="176" fill="#0d1722" stroke="#33506a" stroke-width="1.4"/>
-          <rect x="850" y="226" width="210" height="152" fill="url(#ventanas)" opacity=".7"/>
-        </g>
-        <g stroke="#6f869d" stroke-width="2.4" fill="none" opacity=".8">
-          <path d="M1010 52 h150"/>
-          <path d="M1010 52 v34 M1150 52 v40"/>
-          <path d="M1046 52 v282"/>
-          <path d="M1046 86 l-24 30 M1046 86 l24 30"/>
-          <path d="M1078 52 l-16 34"/>
-        </g>
-        <rect y="386" width="1200" height="34" fill="#060a10"/>
-        <path d="M0 386 h1200" stroke="#2a3d50" stroke-width="1"/>
-      </svg>
-
-      <div class="banner-texto">
-        <span class="banner-eyebrow">Ingeniería civil · Zona sur de Morelos</span>
-        <h1>Obra<span>Sur</span><em>Morelos</em></h1>
-        <p>Tu aliado en la construcción, con información confiable y actualizada cada 15 días.</p>
-        <button class="btn btn-ambar btn-grande" data-vista="comparador">Explorar materiales →</button>
-      </div>
-    </section>
+    </div>
 
     <div class="hero-kpis" id="hero-kpis">
       <!-- KPIs generados por app.js -->
     </div>
+  </section>
+
+  <!-- ===================== PESTAÑAS ===================== -->
+  <nav class="tabs" role="tablist" aria-label="Secciones de la aplicación">
+    <button class="tab activa" role="tab" aria-selected="true" data-vista="comparador">Comparador de precios</button>
+    <button class="tab" role="tab" aria-selected="false" data-vista="cotizador">Cotizador <span class="badge" id="badge-cot" hidden>0</span></button>
+    <button class="tab" role="tab" aria-selected="false" data-vista="proveedores">Proveedores</button>
+    <button class="tab" role="tab" aria-selected="false" data-vista="precios">Precios · quincena</button>
+    <button class="tab" role="tab" aria-selected="false" data-vista="documentacion">Documentación</button>
+  </nav>
+
+  <!-- ===================== VISTA: COMPARADOR ===================== -->
+  <section class="vista" id="vista-comparador" role="tabpanel" aria-label="Comparador de precios">
 
     <div class="panel-toolbar">
+      <div class="buscador">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m16.5 16.5 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input id="busqueda" type="search" placeholder="Busca: cemento, varilla, block, arena…" autocomplete="off">
+      </div>
       <div class="toolbar-der">
         <label class="mini-label" for="orden">Ordenar por</label>
         <select id="orden">
@@ -404,8 +324,8 @@
       </article>
 
       <article class="panel doc-bloque">
-        <h3>Alcance y delimitación</h3>
-        <p>El prototipo cubre seis proveedores de los municipios de Jojutla, Zacatepec, Tlaquiltenango, Tlaltizapán, Puente de Ixtla y Amacuzac, con 29 presentaciones de materiales representativos de una obra residencial. No sustituye un presupuesto formal de obra: no incluye mano de obra, herramienta, fletes por volumen ni tiempos de entrega, y los precios deben verificarse con el proveedor antes de comprar.</p>
+        <h3>Alcance y limitación</h3>
+        <p>El prototipo cubre seis proveedores de los municipios de Jojutla, Zacatepec, Tlaquiltenango, Tlaltizapán, Puente de Ixtla y Amacuzac, con 24 materiales representativos de una obra residencial. No sustituye un presupuesto formal de obra: no incluye mano de obra, herramienta, fletes por volumen ni tiempos de entrega, y los precios deben verificarse con el proveedor antes de comprar.</p>
         <p class="nota">Los precios incluidos son de ejemplo y sirven para demostrar el funcionamiento; se reemplazan registrando los precios reales en la sección <strong>Precios · quincena</strong>.</p>
       </article>
 
@@ -433,7 +353,7 @@
         <li>
           <span class="lt-dia">Semana 1 · Días 1 a 7</span>
           <strong>Levantamiento de información</strong>
-          <p>Definir los materiales, sus presentaciones y unidades, visitar o llamar a los seis proveedores, capturar precios y registrar distancias y costos de envío.</p>
+          <p>Definir los 24 materiales y sus unidades, visitar o llamar a los seis proveedores, capturar precios y registrar distancias y costos de envío.</p>
         </li>
         <li>
           <span class="lt-dia">Semana 2 · Días 8 a 14</span>
@@ -498,13 +418,10 @@
     <div class="pie-der">
       <span class="pastilla pastilla-suave">Corte quincenal</span>
       <span class="pastilla pastilla-suave">6 proveedores</span>
-      <span class="pastilla pastilla-suave">24 materiales · 29 presentaciones</span>
+      <span class="pastilla pastilla-suave">24 materiales</span>
     </div>
   </footer>
 </main>
-
-</div>
-</div>
 
 <!-- Hoja que se imprime / guarda como PDF -->
 <div class="print-area" id="hoja-impresion"></div>
@@ -513,32 +430,6 @@
 
 <script src="data.js"></script>
 <script src="app.js"></script>
-<script>
-  /* Pantalla de carga: sólo presentación, no toca datos ni cálculos. */
-  (function () {
-    var capa = document.getElementById('cargador');
-    if (!capa) return;
-    var barra = capa.querySelector('.cargador-barra span');
-    var pct = capa.querySelector('.cargador-pct');
-    var valor = 0, cerrado = false;
-    var tic = setInterval(function () {
-      valor = Math.min(94, valor + 4 + Math.random() * 9);
-      barra.style.width = valor + '%';
-      pct.textContent = Math.round(valor) + '%';
-    }, 90);
-    function cerrar() {
-      if (cerrado) return;
-      cerrado = true;
-      clearInterval(tic);
-      barra.style.width = '100%';
-      pct.textContent = '100%';
-      setTimeout(function () { capa.classList.add('fuera'); }, 240);
-      setTimeout(function () { if (capa.parentNode) capa.parentNode.removeChild(capa); }, 1000);
-    }
-    if (document.readyState === 'complete') setTimeout(cerrar, 520);
-    else window.addEventListener('load', function () { setTimeout(cerrar, 480); });
-    setTimeout(cerrar, 3200);
-  })();
-</script>
 </body>
 </html>
+
