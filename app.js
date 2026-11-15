@@ -1078,3 +1078,13 @@
 
   iniciar();
 })();
+// Ocultar pantalla de carga de ObraSur
+window.addEventListener("load", () => {
+  const cargador = document.getElementById("cargador");
+
+  if (cargador) {
+    setTimeout(() => {
+      cargador.classList.add("fuera");
+    }, 2500);
+  }
+});
