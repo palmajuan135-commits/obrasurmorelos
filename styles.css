@@ -786,7 +786,7 @@ table td { border-color: rgba(225,235,247,.10); }
     radial-gradient(600px 500px at 80% 100%, rgba(255, 255, 255, .035), transparent 70%),
     #080a0e;
   transition: opacity .5s ease, visibility .5s ease;
-  animation: cargador-auto-fuera .6s ease 3.6s forwards;
+
 }
 
 .cargador::before {
@@ -807,7 +807,7 @@ table td { border-color: rgba(225,235,247,.10); }
   pointer-events: none;
 }
 
-@keyframes cargador-auto-fuera {
+ {
   to {
     opacity: 0;
     visibility: hidden;
