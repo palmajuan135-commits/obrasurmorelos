@@ -480,3 +480,290 @@ table { width: 100%; border-collapse: collapse; }
   .print-firmas { display: flex; gap: 40px; margin-top: 46px; }
   .print-firmas div { flex: 1; border-top: 1px solid #111; padding-top: 5px; font-size: 8.5pt; text-align: center; color: #444; }
 }
+
+
+/* ==========================================================================
+   PRECIOOBRA MORELOS · TITANIUM EDITION
+   Rediseño visual sin alterar IDs, eventos ni lógica de app.js.
+   Paleta: negro, blanco, grafito y plata. Sin acentos verdes.
+   ========================================================================== */
+:root {
+  --bg: #07090d;
+  --bg-suave: #0c1016;
+  --panel: rgba(22, 27, 35, .88);
+  --panel-2: #202733;
+  --panel-3: #2b3441;
+  --linea: rgba(220, 230, 242, .17);
+  --linea-suave: rgba(220, 230, 242, .10);
+  --texto: #f5f7fa;
+  --texto-2: #c1c9d4;
+  --texto-3: #8994a3;
+  --ambar: #dce3ec;
+  --ambar-fuerte: #ffffff;
+  --ambar-suave: rgba(220, 227, 236, .10);
+  --verde: #c8d1dc;
+  --rojo: #f07878;
+  --radio: 19px;
+  --radio-sm: 12px;
+  --sombra: 0 24px 65px -34px rgba(0,0,0,.95), inset 0 1px 0 rgba(255,255,255,.045);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background:
+    radial-gradient(900px 500px at 80% -12%, rgba(205, 218, 235, .12), transparent 66%),
+    radial-gradient(720px 440px at 4% 18%, rgba(113, 129, 151, .10), transparent 62%),
+    linear-gradient(145deg, #080a0e 0%, #111722 48%, #080a0e 100%);
+  background-attachment: fixed;
+}
+.topbar {
+  margin-left: 226px;
+  background: rgba(7, 9, 13, .78);
+  border-bottom: 1px solid rgba(230,238,248,.14);
+  box-shadow: 0 12px 35px rgba(0,0,0,.22);
+}
+.topbar-in { max-width: none; height: 76px; padding: 0 34px; }
+.marca { gap: 12px; }
+.marca-icono { color: #f4f7fb; filter: drop-shadow(0 0 12px rgba(220,230,242,.28)); }
+.marca-texto strong { letter-spacing: -.045em; }
+.marca-texto small { letter-spacing: .12em; font-size: 9px; }
+.topbar-der { gap: 12px; }
+.pastilla {
+  background: linear-gradient(145deg, rgba(255,255,255,.10), rgba(255,255,255,.025));
+  border-color: rgba(225,235,247,.18);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+}
+.pastilla::before { background: #dce3ec; box-shadow: 0 0 0 3px rgba(220,227,236,.12); }
+.pastilla.alerta::before { background: #f07878; }
+
+main.wrap {
+  max-width: none;
+  margin: 0 0 0 226px;
+  padding: 0 34px 32px;
+}
+.tabs {
+  position: fixed;
+  z-index: 60;
+  inset: 0 auto 0 0;
+  width: 226px;
+  margin: 0;
+  padding: 26px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background:
+    radial-gradient(250px 220px at 20% 0%, rgba(220,230,242,.10), transparent 70%),
+    linear-gradient(180deg, rgba(17,22,30,.98), rgba(7,9,13,.99));
+  border-right: 1px solid rgba(225,235,247,.15);
+  box-shadow: 18px 0 55px rgba(0,0,0,.28);
+}
+.tabs::before {
+  content: "PRECIOOBRA";
+  display: block;
+  color: #f7f9fc;
+  font-family: var(--fuente-titulo);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -.055em;
+  padding: 9px 12px 2px;
+}
+.tabs::after {
+  content: "MORELOS  /  CONSTRUCTION TECH";
+  display: block;
+  order: 20;
+  color: #8793a2;
+  font-size: 8px;
+  letter-spacing: .13em;
+  padding: 18px 12px;
+  border-top: 1px solid rgba(225,235,247,.12);
+  margin-top: auto;
+}
+.tab {
+  width: 100%;
+  min-height: 47px;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  padding: 12px 14px;
+  border: 1px solid transparent;
+  border-radius: 13px;
+  color: #aab4c2;
+  font-size: 13px;
+  background: transparent;
+  transition: .22s ease;
+}
+.tab::before {
+  content: "";
+  width: 8px; height: 8px;
+  flex: 0 0 8px;
+  margin-right: 13px;
+  border-radius: 3px;
+  border: 1px solid #8f9bab;
+  transform: rotate(45deg);
+}
+.tab:hover {
+  color: #fff;
+  background: rgba(255,255,255,.055);
+  border-color: rgba(255,255,255,.09);
+  transform: translateX(2px);
+}
+.tab.activa {
+  color: #10151d;
+  background: linear-gradient(135deg, #fff, #b9c3d0);
+  border-color: rgba(255,255,255,.75);
+  box-shadow: 0 9px 25px rgba(180,195,215,.18), inset 0 1px 0 #fff;
+}
+.tab.activa::before { background: #1a2029; border-color: #1a2029; }
+.tab.activa::after { display: none; }
+.badge { background: #171d26; color: #fff; }
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 300px;
+  margin: 26px 0 26px;
+  padding: 44px 42px;
+  grid-template-columns: minmax(0,1.1fr) minmax(280px,.9fr);
+  gap: 26px;
+  overflow: hidden;
+  border: 1px solid rgba(225,235,247,.20);
+  border-radius: 25px;
+  background:
+    linear-gradient(100deg, rgba(8,11,16,.97) 0%, rgba(12,17,25,.88) 48%, rgba(12,17,25,.40) 100%),
+    radial-gradient(ellipse at 80% 35%, rgba(205,218,235,.22), transparent 45%),
+    linear-gradient(135deg, #202936, #0a0d12 72%);
+  box-shadow: 0 30px 75px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.12);
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 390px; height: 390px;
+  right: 5%; top: -115px;
+  border: 1px solid rgba(235,242,250,.20);
+  border-radius: 42px;
+  transform: rotate(35deg) skew(-7deg);
+  box-shadow: 0 0 0 22px rgba(255,255,255,.018), 0 0 0 44px rgba(255,255,255,.012), inset 0 0 65px rgba(220,230,242,.08);
+}
+.hero::after {
+  content: "ENGINEERING  /  MATERIALS  /  COST CONTROL";
+  position: absolute;
+  right: 28px; bottom: 20px;
+  color: rgba(235,242,250,.35);
+  font-size: 9px;
+  letter-spacing: .2em;
+}
+.eyebrow {
+  color: #e7edf5;
+  background: rgba(225,235,247,.09);
+  border-color: rgba(225,235,247,.22);
+}
+.hero h1 { font-size: clamp(34px, 4vw, 55px); line-height: 1.08; letter-spacing: -.065em; }
+.ambar { color: #fff; }
+.hero-p { max-width: 64ch; color: #c1cad6; }
+.hero-acciones { margin-top: 24px; }
+.btn {
+  border-radius: 11px;
+  box-shadow: 0 5px 15px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.07);
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.12); }
+.btn-ambar {
+  color: #111720;
+  background: linear-gradient(145deg, #fff, #aeb9c8);
+  border-color: rgba(255,255,255,.72);
+}
+.btn-ambar:hover { background: linear-gradient(145deg, #fff, #d5dde7); }
+.btn-linea, .btn-ghost {
+  color: #e8edf4;
+  background: linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.025));
+  border-color: rgba(225,235,247,.18);
+}
+.btn-linea:hover, .btn-ghost:hover { background: rgba(255,255,255,.13); border-color: rgba(255,255,255,.35); }
+.btn-icono { color: #d7e0eb; border-color: rgba(225,235,247,.18); }
+
+.kpi, .panel, .mat-card, .prov-card {
+  background: linear-gradient(145deg, rgba(37,45,57,.92), rgba(15,19,26,.96));
+  border: 1px solid rgba(225,235,247,.15);
+  border-radius: 18px;
+  box-shadow: 0 18px 45px rgba(0,0,0,.30), inset 0 1px 0 rgba(255,255,255,.075);
+}
+.kpi { position: relative; overflow: hidden; }
+.kpi::after {
+  content: "";
+  position: absolute; inset: auto -20% -65% 20%; height: 100%;
+  background: radial-gradient(ellipse, rgba(220,230,242,.13), transparent 65%);
+  pointer-events: none;
+}
+.kpi.destacado { border-color: rgba(225,235,247,.30); background: linear-gradient(145deg, rgba(225,235,247,.14), rgba(15,19,26,.96)); }
+.kpi.destacado strong { color: #fff; }
+.panel { backdrop-filter: blur(16px); }
+.panel-titulo, .seccion-titulo h2 { color: #f5f7fa; letter-spacing: -.035em; }
+.seccion-titulo { padding: 12px 2px 4px; }
+.seccion-titulo h2 { font-size: clamp(25px,3vw,34px); }
+.buscador, select, input:not([type="checkbox"]):not([type="file"]), textarea {
+  color: #f5f7fa;
+  background: rgba(5,8,12,.55);
+  border-color: rgba(225,235,247,.18);
+  border-radius: 11px;
+}
+input::placeholder { color: #778393; }
+.buscador:focus-within, input:focus, select:focus, textarea:focus {
+  border-color: rgba(225,235,247,.55) !important;
+  box-shadow: 0 0 0 3px rgba(225,235,247,.08) !important;
+}
+select option { background: #171d26; color: #f5f7fa; }
+.mat-card:hover, .prov-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(230,238,248,.35);
+  box-shadow: 0 24px 55px rgba(0,0,0,.42), 0 0 24px rgba(220,230,242,.06);
+}
+.tabla-scroll { border: 1px solid rgba(225,235,247,.13); border-radius: 13px; }
+table th { color: #e4eaf2; background: rgba(255,255,255,.055); }
+table td { border-color: rgba(225,235,247,.10); }
+.pie { border-color: rgba(225,235,247,.13); }
+.pastilla-suave { background: rgba(255,255,255,.055); }
+.toast { background: #171d26; border-color: rgba(225,235,247,.25); box-shadow: 0 18px 50px rgba(0,0,0,.5); }
+
+@media (max-width: 1000px) {
+  .topbar { margin-left: 0; }
+  main.wrap { margin-left: 0; padding-left: 22px; padding-right: 22px; }
+  .tabs {
+    position: sticky;
+    inset: auto;
+    top: 76px;
+    width: auto;
+    margin: 0 -22px 20px;
+    padding: 10px 22px;
+    flex-direction: row;
+    align-items: center;
+    overflow-x: auto;
+    border-right: 0;
+    border-bottom: 1px solid rgba(225,235,247,.15);
+  }
+  .tabs::before, .tabs::after { display: none; }
+  .tab { width: auto; flex: 0 0 auto; min-height: 42px; }
+  .tab::before { display: none; }
+  .hero { min-height: auto; padding: 34px 28px; }
+}
+@media (max-width: 640px) {
+  .topbar-in { padding: 0 16px; }
+  main.wrap { padding: 0 16px 24px; }
+  .tabs { top: 60px; margin: 0 -16px 16px; padding: 9px 16px; }
+  .tab { padding: 10px 12px; font-size: 12px; }
+  .hero { margin: 16px 0; padding: 28px 22px; border-radius: 18px; }
+  .hero h1 { font-size: 34px; }
+  .hero::before { right: -220px; opacity: .5; }
+  .hero::after { display: none; }
+  .hero-kpis { grid-template-columns: 1fr 1fr; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .panel, .kpi, .mat-card, .prov-card { animation: titanium-rise .55s both; }
+  @keyframes titanium-rise {
+    from { opacity: 0; transform: translateY(9px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
